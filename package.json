@@ -2,5 +2,11 @@
   "type": "module",
   "scripts": {
     "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.1.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": ["./setup-jest.js"]
   }
 }
