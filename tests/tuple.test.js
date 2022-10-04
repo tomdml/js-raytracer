@@ -54,3 +54,18 @@ test('negating a tuple', () => {
 	const a = tuple(1, -2, 3, -4)
 	expect(a.neg()).toStrictEqual(tuple(-1, 2, -3, 4))
 })
+
+test('multiplying a tuple by a scalar', () => {
+	const a = tuple(1, -2, 3, -4)
+	expect(a.mul(3.5)).toStrictEqual(tuple(3.5, -7, 10.5, -14))
+})
+
+test('multiplying a tuple by a fraction', () => {
+	const a = tuple(1, -2, 3, -4)
+	expect(a.mul(0.5)).toStrictEqual(tuple(0.5, -1, 1.5, -2))
+})
+
+test('dividing a tuple by a scalar', () => {
+	const a = tuple(1, -2, 3, -4)
+	expect(a.div(2)).toStrictEqual(tuple(0.5, -1, 1.5, -2))
+})

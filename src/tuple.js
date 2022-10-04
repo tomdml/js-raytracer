@@ -32,6 +32,24 @@ Tuple.prototype.neg = function() {
 	)
 }
 
+Tuple.prototype.mul = function(scalar) {
+	return new Tuple(
+		this.x * scalar,
+		this.y * scalar,
+		this.z * scalar,
+		this.w * scalar,
+	)
+}
+
+Tuple.prototype.div = function(scalar) {
+	return new Tuple(
+		this.x / scalar,
+		this.y / scalar,
+		this.z / scalar,
+		this.w / scalar,
+	)
+}
+
 function tuple(x, y, z, w) {
 	return new Tuple(x, y, z, w)
 }
