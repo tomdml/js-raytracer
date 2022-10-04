@@ -7,9 +7,8 @@ class Canvas {
 		this.width = width
 		this.height = height
 
-		this.grid = Array.from({ length: height}, () => 
-			Array.from({ length: width}), () => color(0, 0, 0)
-		)
+		this.grid = [...Array(height)].map(
+			() => [...Array(width)].map(() => color(0, 0, 0)))
 	}
 
 	write_pixel(x, y, pixel) {
@@ -18,6 +17,27 @@ class Canvas {
 
 	pixel_at(x, y) {
 		return this.grid[y][x]
+	}
+
+	_ppm_header() {
+		return `P3
+5 3
+255`
+	}
+
+	_ppm_body() {
+		const make_integer = (value) => Math.ceil(Math.min(Math.max(0, value), 1) * 255)
+
+		const pixel_to_ppm = (pixel) => 
+			`${make_integer(pixel.r)} ${make_integer(pixel.g)} ${make_integer(pixel.b)}`
+
+		return this.grid.map(row => 
+			row.map(pixel => pixel_to_ppm(pixel)).join(' ')
+		).join('\n')
+	}
+
+	to_ppm() {
+		return this._ppm_header() + '\n' + this._ppm_body() + '\n'
 	}
 
 }
