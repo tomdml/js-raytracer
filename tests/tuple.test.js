@@ -69,3 +69,27 @@ test('dividing a tuple by a scalar', () => {
 	const a = tuple(1, -2, 3, -4)
 	expect(a.div(2)).toStrictEqual(tuple(0.5, -1, 1.5, -2))
 })
+
+test('computing the magnitude of a vector(1, 0, 0)', () => {
+	const v = vector(1, 0, 0)
+	expect(v.abs()).toBe(1)
+})
+
+test('computing the magnitude of a vector(0, 1, 0)', () => {
+	const v = vector(0, 1, 0)
+	expect(v.abs()).toBe(1)
+})
+
+test('computing the magnitude of a vector(0, 0, 1)', () => {
+	const v = vector(0, 0, 1)
+	expect(v.abs()).toBe(1)
+})
+
+test('computing the magnitude of a vector(1, 2, 3)', () => {
+	const v = vector(1, 2, 3)
+	expect(v.abs()).toBe(14 ** 0.5)
+})
+test('computing the magnitude of a vector(-1, -2, -3)', () => {
+	const v = vector(-1, -2, -3)
+	expect(v.abs()).toBe(14 ** 0.5)
+})

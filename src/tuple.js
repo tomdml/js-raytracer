@@ -50,6 +50,10 @@ Tuple.prototype.div = function(scalar) {
 	)
 }
 
+Tuple.prototype.abs = function() {
+	return (this.x ** 2 + this.y ** 2 + this.z ** 2) ** 0.5
+}
+
 function tuple(x, y, z, w) {
 	return new Tuple(x, y, z, w)
 }
