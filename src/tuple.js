@@ -1,14 +1,44 @@
-function tuple(x, y, z, w) {
-	return {x, y, z, w}
+function Tuple(x, y, z, w) {
+	this.x = x
+	this.y = y
+	this.z = z
+	this.w = w
 }
 
-function vector(x, y, z) {
-	return tuple(x, y, z, 0)
+Tuple.prototype.add = function(other) {
+	return new Tuple(
+		this.x + other.x,
+		this.y + other.y,
+		this.z + other.z,
+		this.w + other.w,
+	)
 }
 
-function point(x, y, z) {
-	return tuple(x, y, z, 1)
+Tuple.prototype.sub = function(other) {
+	return new Tuple(
+		this.x - other.x,
+		this.y - other.y,
+		this.z - other.z,
+		this.w - other.w,
+	)
+}
+
+Tuple.prototype.neg = function() {
+	return new Tuple(
+		-this.x,
+		-this.y,
+		-this.z,
+		-this.w
+	)
+}
+
+function Vector(x, y, z) {
+	return new Tuple(x, y, z, 0)
+}
+
+function Point(x, y, z) {
+	return new Tuple(x, y, z, 1)
 }
 
 
-module.exports = {tuple, point, vector}
+module.exports = {Tuple, Point, Vector}
