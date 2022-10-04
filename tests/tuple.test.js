@@ -104,3 +104,16 @@ test('normalising vector(1, 2, 3)', () => {
 	const v = vector(1, 2, 3)
 	expect(v.norm()).toStrictEqual(vector(1/(14**0.5), 2/(14**0.5), 3/(14**0.5)))
 })
+
+test('the dot product of two tuples', () => {
+	const a = vector(1, 2, 3)
+	const b = vector(2, 3, 4)
+	expect(a.dot(b)).toBe(20)
+})
+
+test('the cross product of two vectors', () => {
+	const a = vector(1, 2, 3)
+	const b = vector(2, 3, 4)
+	expect(a.cross(b)).toStrictEqual(vector(-1, 2, -1))
+	expect(b.cross(a)).toStrictEqual(vector(1, -2, 1))
+})

@@ -72,6 +72,24 @@ class Tuple {
 			this.w / magnitude,
 		)
 	}
+
+	dot(other) {
+		// vector operation: w should be zero here
+		return this.x * other.x +
+			   this.y * other.y +
+			   this.z * other.z +
+			   this.w * other.w
+	}
+
+	cross(other) {
+		// vector operation: w should be zero here so we're only implementing 3d cross
+		return new Tuple(
+			this.y * other.z - this.z * other.y,
+			this.z * other.x - this.x * other.z,
+			this.x * other.y - this.y * other.x,
+			0
+		)
+	}
 }
 
 // class Vector extends Tuple {
