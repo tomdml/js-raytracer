@@ -89,7 +89,18 @@ test('computing the magnitude of a vector(1, 2, 3)', () => {
 	const v = vector(1, 2, 3)
 	expect(v.abs()).toBe(14 ** 0.5)
 })
+
 test('computing the magnitude of a vector(-1, -2, -3)', () => {
 	const v = vector(-1, -2, -3)
 	expect(v.abs()).toBe(14 ** 0.5)
+})
+
+test('normalising vector(4, 0, 0) gives (1, 0, 0)', () => {
+	const v = vector(4, 0, 0)
+	expect(v.norm()).toStrictEqual(vector(1, 0, 0))
+})
+
+test('normalising vector(1, 2, 3)', () => {
+	const v = vector(1, 2, 3)
+	expect(v.norm()).toStrictEqual(vector(1/(14**0.5), 2/(14**0.5), 3/(14**0.5)))
 })

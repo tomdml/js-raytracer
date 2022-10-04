@@ -30,7 +30,7 @@ class Tuple {
 			-this.x,
 			-this.y,
 			-this.z,
-			-this.w
+			-this.w,
 		)
 	}
 
@@ -54,8 +54,23 @@ class Tuple {
 
 	abs() {
 		// vector operation: w should be zero here
-		// does this need to be within a vector class?
-		return (this.x ** 2 + this.y ** 2 + this.z ** 2 + this.w ** 2) ** 0.5
+		return (
+			this.x ** 2 + 
+			this.y ** 2 + 
+			this.z ** 2 + 
+			this.w ** 2
+		) ** 0.5
+	}
+
+	norm() {
+		// vector operation: w should be zero here
+		let magnitude = this.abs()
+		return new Tuple(
+			this.x / magnitude,
+			this.y / magnitude,
+			this.z / magnitude,
+			this.w / magnitude,
+		)
 	}
 }
 
