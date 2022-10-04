@@ -32,13 +32,17 @@ Tuple.prototype.neg = function() {
 	)
 }
 
-function Vector(x, y, z) {
-	return new Tuple(x, y, z, 0)
+function tuple(x, y, z, w) {
+	return new Tuple(x, y, z, w)
 }
 
-function Point(x, y, z) {
-	return new Tuple(x, y, z, 1)
+function vector(x, y, z) {
+	return tuple(x, y, z, 0)
+}
+
+function point(x, y, z) {
+	return tuple(x, y, z, 1)
 }
 
 
-module.exports = {Tuple, Point, Vector}
+module.exports = {tuple, point, vector}
