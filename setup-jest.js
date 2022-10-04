@@ -5,7 +5,6 @@ function toBeShallowCloseTo(actual, target) {
 	function floatEqual(a, b, epsilon) {
 		return Math.abs(a-b) < epsilon
 	}
-	//
 
 	const pass = Object.keys(actual).map(
 		key => floatEqual(actual[key], target[key], epsilon)

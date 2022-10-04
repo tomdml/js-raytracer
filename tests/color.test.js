@@ -23,3 +23,9 @@ test('multiplying a color by a scalar', () => {
 	const c = color(0.2, 0.3, 0.4)
 	expect(c.mul(2)).toStrictEqual(color(0.4, 0.6, 0.8))
 })
+
+test('multiplying colors', () => {
+	const c1 = color(1, 0.2, 0.4)
+	const c2 = color(0.9, 1, 0.1)
+	expect(c1.mul(c2)).toBeShallowCloseTo(color(0.9, 0.2, 0.04))
+})
