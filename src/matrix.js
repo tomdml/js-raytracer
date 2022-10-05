@@ -83,6 +83,10 @@ class Matrix {
 		return this.submatrix(row, col).determinant
 	}
 
+	cofactor(row, col) {
+		return (row + col) % 2 ? -this.minor(row, col) : this.minor(row, col)
+	}
+
 
 }
 

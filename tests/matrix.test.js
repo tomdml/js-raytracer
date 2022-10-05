@@ -153,7 +153,16 @@ test('a submatrix of a 4x4 matrix is a 3x3 matrix', () => {
 test('calculating the minor of a 3x3 matrix', () => {
 	const A = matrix([[3, 5, 0], [2, -1, -7], [6, -1, 5]])
 	const B = A.submatrix(1, 0)
-	
+
 	expect(B.determinant).toBe(25)
 	expect(A.minor(1,0)).toBe(25)
+})
+
+test('calculating the cofactor of a 3x3 matrix', () => {
+	const A = matrix([[3, 5, 0], [2, -1, -7], [6, -1, 5]])
+
+	expect(A.minor(0, 0)).toBe(-12)
+	expect(A.cofactor(0, 0)).toBe(-12)
+	expect(A.minor(1, 0)).toBe(25)
+	expect(A.cofactor(1, 0)).toBe(-25)
 })
