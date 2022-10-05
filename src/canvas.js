@@ -19,11 +19,9 @@ class Canvas {
 		return this.grid[y][x]
 	}
 
-	_ppm_header() {
-		return `P3
+	_ppm_header = `P3
 5 3
 255`
-	}
 
 	_ppm_body() {
 		const make_integer = (value) => Math.ceil(Math.min(Math.max(0, value), 1) * 255)
@@ -37,7 +35,7 @@ class Canvas {
 	}
 
 	to_ppm() {
-		return this._ppm_header() + '\n' + this._ppm_body() + '\n'
+		return this._ppm_header + '\n' + this._ppm_body() + '\n'
 	}
 
 }

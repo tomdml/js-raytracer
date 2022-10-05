@@ -52,7 +52,7 @@ class Tuple {
 		)
 	}
 
-	abs() {
+	get abs() {
 		// vector operation: w should be zero here
 		return (
 			this.x ** 2 + 
@@ -62,9 +62,9 @@ class Tuple {
 		) ** 0.5
 	}
 
-	norm() {
+	get norm() {
 		// vector operation: w should be zero here
-		let magnitude = this.abs()
+		let magnitude = this.abs
 		return new Tuple(
 			this.x / magnitude,
 			this.y / magnitude,

@@ -16,7 +16,7 @@ test('writing pixels to a canvas', () => {
 
 test('constructing the PPM header', () => {
 	const c = new Canvas(5, 3)
-	let ppm_header = c._ppm_header()
+	let ppm_header = c._ppm_header
 	expect(ppm_header).toMatch(/^P3\n5 3\n255?/)
 })
 

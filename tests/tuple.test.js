@@ -72,37 +72,37 @@ test('dividing a tuple by a scalar', () => {
 
 test('computing the magnitude of a vector(1, 0, 0)', () => {
 	const v = vector(1, 0, 0)
-	expect(v.abs()).toBe(1)
+	expect(v.abs).toBe(1)
 })
 
 test('computing the magnitude of a vector(0, 1, 0)', () => {
 	const v = vector(0, 1, 0)
-	expect(v.abs()).toBe(1)
+	expect(v.abs).toBe(1)
 })
 
 test('computing the magnitude of a vector(0, 0, 1)', () => {
 	const v = vector(0, 0, 1)
-	expect(v.abs()).toBe(1)
+	expect(v.abs).toBe(1)
 })
 
 test('computing the magnitude of a vector(1, 2, 3)', () => {
 	const v = vector(1, 2, 3)
-	expect(v.abs()).toBe(14 ** 0.5)
+	expect(v.abs).toBe(14 ** 0.5)
 })
 
 test('computing the magnitude of a vector(-1, -2, -3)', () => {
 	const v = vector(-1, -2, -3)
-	expect(v.abs()).toBe(14 ** 0.5)
+	expect(v.abs).toBe(14 ** 0.5)
 })
 
 test('normalising vector(4, 0, 0) gives (1, 0, 0)', () => {
 	const v = vector(4, 0, 0)
-	expect(v.norm()).toStrictEqual(vector(1, 0, 0))
+	expect(v.norm).toStrictEqual(vector(1, 0, 0))
 })
 
 test('normalising vector(1, 2, 3)', () => {
 	const v = vector(1, 2, 3)
-	expect(v.norm()).toStrictEqual(vector(1/(14**0.5), 2/(14**0.5), 3/(14**0.5)))
+	expect(v.norm).toStrictEqual(vector(1/(14**0.5), 2/(14**0.5), 3/(14**0.5)))
 })
 
 test('the dot product of two tuples', () => {
