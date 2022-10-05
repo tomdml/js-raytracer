@@ -70,12 +70,22 @@ class Matrix {
 			// for [[a, b], [c, d]], determinant = ad - bc
 			return this.get(0, 0) * this.get(1, 1) - this.get(0, 1) * this.get(1, 0)
 		}
+
+		let det = 0
+
+		this.data[0].forEach((_, idx) => {
+			det += this.get(0, idx) * this.cofactor(0, idx)
+		})
+
+		return det
 	}
 
 	submatrix(row, col) {
 		return new Matrix(
 			// drop the given row and col
-			this.data.filter((_row, idx) => idx != row).map(_row => _row.filter((_col, idx) => idx != col))
+			this.data
+				.filter((_row, idx) => idx != row)
+				.map(_row => _row.filter((_col, idx) => idx != col))
 		)
 	}
 
@@ -85,6 +95,25 @@ class Matrix {
 
 	cofactor(row, col) {
 		return (row + col) % 2 ? -this.minor(row, col) : this.minor(row, col)
+	}
+
+	get invertible() {
+		return this.determinant != 0
+	}
+
+	get inverse() {
+		if (!this.invertible) throw new Error('Matrix is not invertible!')
+
+		let result = new Matrix(4)
+		let determinant = this.determinant
+
+		this.data.forEach((row, row_idx) => 
+			row.forEach((_, col_idx) => 
+				result.set(col_idx, row_idx, this.cofactor(row_idx, col_idx) / determinant)
+			)
+		)
+
+		return result
 	}
 
 

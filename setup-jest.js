@@ -1,6 +1,6 @@
 function toBeShallowCloseTo(actual, target) {
 
-	const epsilon = 0.0000001;
+	const epsilon = 0.00001;
 
 	function floatEqual(a, b, epsilon) {
 		return Math.abs(a-b) < epsilon
@@ -33,4 +33,39 @@ function toBeShallowCloseTo(actual, target) {
 	  }
 }
 
-expect.extend({toBeShallowCloseTo})
+function closeToMatrix(actual, target) {
+
+	const epsilon = 0.00001;
+
+	function floatEqual(a, b, epsilon) {
+		return Math.abs(a-b) < epsilon
+	}
+
+	let pass = actual.data.map((row, row_idx) => 
+		row.map((cell, col_idx) => 
+			floatEqual(cell, target.get(row_idx, col_idx), epsilon)
+	    )
+	).every(row => row.every(item => item))
+
+	  if (pass) {
+	    return {
+	      message: () =>
+	        `expected ${this.utils.printReceived(
+	          actual,
+	        )} to be matrix close to ${this.utils.printExpected(
+	          `${target}`,
+	        )}`,
+	      pass: true,
+	    };
+	  } else {
+	    return {
+	      message: () =>
+	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`
+	    ,
+	      pass: false,
+	    }
+	  
+    }
+}
+
+expect.extend({toBeShallowCloseTo, closeToMatrix})
