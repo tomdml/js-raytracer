@@ -88,3 +88,45 @@ test('rotating a point around the z axis', () => {
 	expect(half_quarter.mul(p)).toBeShallowCloseTo(point(-root2/2, root2/2, 0))
 	expect(full_quarter.mul(p)).toBeShallowCloseTo(point(-1, 0, 0))
 })
+
+test('a shearing transformation moves x in proportion to y', () => {
+	const transform = Matrix.shearing(1, 0, 0, 0, 0, 0)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(5, 3, 4))
+})
+
+test('a shearing transformation moves x in proportion to z', () => {
+	const transform = Matrix.shearing(0, 1, 0, 0, 0, 0)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(6, 3, 4))
+})
+
+test('a shearing transformation moves y in proportion to x', () => {
+	const transform = Matrix.shearing(0, 0, 1, 0, 0, 0)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(2, 5, 4))
+})
+
+test('a shearing transformation moves y in proportion to z', () => {
+	const transform = Matrix.shearing(0, 0, 0, 1, 0, 0)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(2, 7, 4))
+})
+
+test('a shearing transformation moves z in proportion to x', () => {
+	const transform = Matrix.shearing(0, 0, 0, 0, 1, 0)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(2, 3, 6))
+})
+
+test('a shearing transformation moves z in proportion to y', () => {
+	const transform = Matrix.shearing(0, 0, 0, 0, 0, 1)
+	const p = point(2, 3, 4)
+
+	expect(transform.mul(p)).toStrictEqual(point(2, 3, 7))
+})
