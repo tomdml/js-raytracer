@@ -7,6 +7,24 @@ class Matrix {
 		else this.data = [...arg]
 	}
 
+	static translation(x, y, z) {
+		return new Matrix([
+			[1, 0, 0, x],
+			[0, 1, 0, y],
+			[0, 0, 1, z],
+			[0, 0, 0, 1]
+		])
+	}
+
+	static scaling(x, y, z) {
+		return new Matrix([
+			[x, 0, 0, 0],
+			[0, y, 0, 0],
+			[0, 0, z, 0],
+			[0, 0, 0, 1]
+		])
+	}
+
 	get(y, x) {
 		return this.data[y][x]
 	}
@@ -131,4 +149,4 @@ const I = new Matrix([
 )
 
 
-module.exports = { matrix, I }
+module.exports = { Matrix, matrix, I }

@@ -1,7 +1,7 @@
 {
-  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "main": "node main.js"
   },
   "devDependencies": {
     "jest": "^29.1.2"

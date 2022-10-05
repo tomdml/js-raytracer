@@ -295,4 +295,3 @@ test('multiplying a product by its inverse', () => {
 
 	expect(C.mul(B.inverse)).closeToMatrix(A)
 })
-
