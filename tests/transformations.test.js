@@ -79,3 +79,12 @@ test('rotating a point around the y axis', () => {
 	expect(half_quarter.mul(p)).toBeShallowCloseTo(point(root2/2, 0, root2/2))
 	expect(full_quarter.mul(p)).toBeShallowCloseTo(point(1, 0, 0))
 })
+
+test('rotating a point around the z axis', () => {
+	const p = point(0, 1, 0)
+	const half_quarter = Matrix.rotation_z(Math.PI / 4)
+	const full_quarter= Matrix.rotation_z(Math.PI / 2)
+
+	expect(half_quarter.mul(p)).toBeShallowCloseTo(point(-root2/2, root2/2, 0))
+	expect(full_quarter.mul(p)).toBeShallowCloseTo(point(-1, 0, 0))
+})

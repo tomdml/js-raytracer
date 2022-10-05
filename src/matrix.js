@@ -43,7 +43,14 @@ class Matrix {
 		])
 	}
 
-
+	static rotation_z(r) {
+		return new Matrix([
+			[Math.cos(r), -Math.sin(r), 0, 0],
+			[Math.sin(r), Math.cos(r),  0, 0],
+			[0,           0,            0, 0],
+			[0,           0,            0, 1]
+		])
+	}
 
 	get(y, x) {
 		return this.data[y][x]
