@@ -90,6 +90,10 @@ class Tuple {
 			0
 		)
 	}
+
+	reflect(normal) {
+		return this.sub(normal.mul(2).mul(this.dot(normal)))
+	}
 }
 
 // class Vector extends Tuple {

@@ -117,3 +117,17 @@ test('the cross product of two vectors', () => {
 	expect(a.cross(b)).toStrictEqual(vector(-1, 2, -1))
 	expect(b.cross(a)).toStrictEqual(vector(1, -2, 1))
 })
+
+test('reflecting a vector approaching at 45deg', () => {
+	const v = vector(1, -1, 0)
+	const n = vector(0, 1, 0)
+	const r = v.reflect(n)
+	expect(r).toBeShallowCloseTo(vector(1, 1, 0))
+})
+
+test('reflecting a vector off a slanted surface', () => {
+	const v = vector(0, -1, 0)
+	const n = vector((2 ** 0.5)/2, (2**0.5)/2, 0)
+	const r = v.reflect(n)
+	expect(r).toBeShallowCloseTo(vector(1, 0, 0))
+})
