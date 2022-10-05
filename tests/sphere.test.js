@@ -2,6 +2,8 @@ const { ray } = require('../src/ray')
 const { point, vector } = require('../src/tuple')
 const { sphere } = require('../src/sphere')
 const { I } = require('../src/matrix')
+const { material } = require('../src/materials')
+
 
 const root3over3 = (3 ** 0.5) / 3
 const root2over2 = (2 ** 0.5) / 2
@@ -158,4 +160,17 @@ test('computing the normal on a transformed sphere', () => {
 
 	const n = s.normal_at(point(0, root2over2, -root2over2))
 	expect(n).toBeShallowCloseTo(vector(0, 0.97014, -0.24254))
+})
+
+test('a sphere has a default material', () => {
+	const s = sphere()
+	expect(s.material).toStrictEqual(material())
+})
+
+test('a sphere may be assigned a material', () => {
+	const s = sphere()
+	const m = material(ambient=10)
+
+	s.material = m
+	expect(s.material).toBe(m)
 })

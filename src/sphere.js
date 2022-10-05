@@ -1,11 +1,13 @@
 const { point } = require('../src/tuple')
 const { intersection, intersections } = require('../src/intersection')
 const { I } = require('../src/matrix')
+const { material } = require('../src/materials')
 
 class Sphere {
 
 	constructor() {	
 		this.transform = I
+		this.material = material()
 	}
 
 	intersect(ray) {
