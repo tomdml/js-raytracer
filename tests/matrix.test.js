@@ -128,3 +128,8 @@ test('transposing a matrix', () => {
 test('transposing the identity matrix', () => {
 	expect(I.T.eq(I)).toBe(true)
 })
+
+test('calculating the determinant of a 2x2 matrix', () => {
+	let A = matrix([[1, 5], [-3, 2]])
+	expect(A.determinant).toBe(17)
+})

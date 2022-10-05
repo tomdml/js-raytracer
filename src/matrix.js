@@ -65,6 +65,13 @@ class Matrix {
 		)
 	}
 
+	get determinant() {
+		if (this.data.length == 2) {
+			// for [[a, b], [c, d]], determinant = ad - bc
+			return this.get(0, 0) * this.get(1, 1) - this.get(0, 1) * this.get(1, 0)
+		}
+	}
+
 
 }
 
