@@ -4,6 +4,7 @@ const { sphere } = require('../src/sphere')
 const { I } = require('../src/matrix')
 
 const root3over3 = (3 ** 0.5) / 3
+const root2over2 = (2 ** 0.5) / 2
 
 test('a ray intersects a sphere at two points', () => {
 	const r = ray(point(0, 0, -5), vector(0, 0, 1))
@@ -141,4 +142,20 @@ test('the normal is a normalised vector', () => {
 	const s = sphere() 
 	const n = s.normal_at(point(root3over3, root3over3, root3over3))
 	expect(n).toStrictEqual(n.norm)
+})
+
+test('computing the normal on a translated sphere', () => {
+	const s = sphere()
+	s.transform = I.translation(0, 1, 0)
+
+	const n = s.normal_at(point(0, 1.70711, -0.70711))
+	expect(n).toBeShallowCloseTo(vector(0, 0.70711, -0.70711))
+})
+
+test('computing the normal on a transformed sphere', () => {
+	const s = sphere()
+	s.transform = I.rotation_z(Math.PI/5).scaling(1, 0.5, 1)
+
+	const n = s.normal_at(point(0, root2over2, -root2over2))
+	expect(n).toBeShallowCloseTo(vector(0, 0.97014, -0.24254))
 })

@@ -32,8 +32,13 @@ class Sphere {
 		)
 	}
 
-	normal_at(p) {
-		return p.sub(point(0, 0, 0)).norm
+	normal_at(world_point) {
+		const object_point = this.transform.inverse.mul(world_point)
+		const object_normal = object_point.sub(point(0, 0, 0))
+		let world_normal = this.transform.inverse.T.mul(object_normal)
+		world_normal.w = 0  // hack to avoid w getting mangled - alternatively find the (3, 3) submatrix
+
+		return world_normal.norm
 	}
 
 }
