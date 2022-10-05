@@ -19,9 +19,11 @@ class Canvas {
 		return this.grid[y][x]
 	}
 
-	_ppm_header = `P3
-5 3
+	get _ppm_header() {
+		return `P3
+${this.width} ${this.height}
 255`
+	}
 
 	_ppm_body() {
 		const make_integer = (value) => Math.ceil(Math.min(Math.max(0, value), 1) * 255)
