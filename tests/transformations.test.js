@@ -130,3 +130,32 @@ test('a shearing transformation moves z in proportion to y', () => {
 
 	expect(transform.mul(p)).toStrictEqual(point(2, 3, 7))
 })
+
+test('individual transformations are applied in sequence', () => {
+	const p = point(1, 0, 1)
+	const A = Matrix.rotation_x(Math.PI/2)
+	const B = Matrix.scaling(5, 5, 5)
+	const C = Matrix.translation(10, 5, 7)
+
+	let p2 = A.mul(p)
+	expect(p2).toBeShallowCloseTo(point(1, -1, 0))
+
+	let p3 = B.mul(p2)
+	expect(p3).toBeShallowCloseTo(point(5, -5, 0))
+
+	let p4 = C.mul(p3)
+	expect(p4).toBeShallowCloseTo(point(15, 0, 7))
+})
+
+
+test('chained transformations must be applied in reverse order', () => {
+	const p = point(1, 0, 1)
+	const A = Matrix.rotation_x(Math.PI/2)
+	const B = Matrix.scaling(5, 5, 5)
+	const C = Matrix.translation(10, 5, 7)
+
+	let T = C.mul(B).mul(A)
+
+	expect(T.mul(p)).toBeShallowCloseTo(point(15, 0, 7))
+})
+

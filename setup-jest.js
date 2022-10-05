@@ -10,27 +10,11 @@ function toBeShallowCloseTo(actual, target) {
 		key => floatEqual(actual[key], target[key], epsilon)
 	).every(item => item === true)
 
-	  if (pass) {
-	    return {
-	      message: () =>
-	        `expected ${this.utils.printReceived(
-	          actual,
-	        )} not be shallow close to ${this.utils.printExpected(
-	          `${target}`,
-	        )}`,
-	      pass: true,
-	    };
-	  } else {
-	    return {
-	      message: () =>
-	        `expected ${this.utils.printReceived(
-	          actual,
-	        )} to be shallow close to ${this.utils.printExpected(
-	          `${target}`,
-	        )}`,
-	      pass: false,
-	    };
-	  }
+	return {
+	    message: () =>
+	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
+	    pass
+	}
 }
 
 function closeToMatrix(actual, target) {
@@ -47,25 +31,11 @@ function closeToMatrix(actual, target) {
 	    )
 	).every(row => row.every(item => item))
 
-	  if (pass) {
-	    return {
-	      message: () =>
-	        `expected ${this.utils.printReceived(
-	          actual,
-	        )} to be matrix close to ${this.utils.printExpected(
-	          `${target}`,
-	        )}`,
-	      pass: true,
-	    };
-	  } else {
-	    return {
-	      message: () =>
-	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`
-	    ,
-	      pass: false,
-	    }
-	  
-    }
+	return {
+	    message: () =>
+	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
+	    pass
+	}
 }
 
 expect.extend({toBeShallowCloseTo, closeToMatrix})
