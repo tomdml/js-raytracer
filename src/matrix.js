@@ -72,6 +72,17 @@ class Matrix {
 		}
 	}
 
+	submatrix(row, col) {
+		return new Matrix(
+			// drop the given row and col
+			this.data.filter((_row, idx) => idx != row).map(_row => _row.filter((_col, idx) => idx != col))
+		)
+	}
+
+	minor(row, col) {
+		return this.submatrix(row, col).determinant
+	}
+
 
 }
 

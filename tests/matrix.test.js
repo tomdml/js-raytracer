@@ -103,19 +103,19 @@ test('multiplying a matrix by the identity matrix', () => {
 })
 
 test('multiplying the identity matrix by a tuple', () => {
-	let a = tuple(1, 2, 3, 4)
+	const a = tuple(1, 2, 3, 4)
 	expect(I.mul(a)).toStrictEqual(a)
 })
 
 test('transposing a matrix', () => {
-	let A = matrix([
+	const A = matrix([
 		[0, 9, 3, 0],
 		[9, 8, 0, 8],
 		[1, 8, 5, 3],
 		[0, 0, 5, 8]
 	])
 
-	let T = matrix([
+	const T = matrix([
 		[0, 9, 1, 0],
 		[9, 8, 8, 0],
 		[3, 0, 5, 5],
@@ -130,6 +130,30 @@ test('transposing the identity matrix', () => {
 })
 
 test('calculating the determinant of a 2x2 matrix', () => {
-	let A = matrix([[1, 5], [-3, 2]])
+	const A = matrix([[1, 5], [-3, 2]])
 	expect(A.determinant).toBe(17)
+})
+
+test('a submatrix of a 3x3 matrix is a 2x2 matrix', () => {
+	const A = matrix([[1, 5, 0], [-3, 2, 7], [0, 6, -3]])
+	expect(A.submatrix(0, 2).eq(matrix([[-3, 2], [0, 6]]))).toBe(true)
+})
+
+test('a submatrix of a 4x4 matrix is a 3x3 matrix', () => {
+	const A = matrix([
+		[-6, 1, 1, 6],
+		[-8, 5, 8, 6],
+		[-1, 0, 8, 2],
+		[-7, 1, -1, 1]
+	])
+
+	expect(A.submatrix(2, 1).eq(matrix([[-6, 1, 6], [-8, 8, 6], [-7, -1, 1]]))).toBe(true)
+})
+
+test('calculating the minor of a 3x3 matrix', () => {
+	const A = matrix([[3, 5, 0], [2, -1, -7], [6, -1, 5]])
+	const B = A.submatrix(1, 0)
+	
+	expect(B.determinant).toBe(25)
+	expect(A.minor(1,0)).toBe(25)
 })
