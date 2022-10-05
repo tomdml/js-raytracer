@@ -7,60 +7,6 @@ class Matrix {
 		else this.data = [...arg]
 	}
 
-	static translation(x, y, z) {
-		return new Matrix([
-			[1, 0, 0, x],
-			[0, 1, 0, y],
-			[0, 0, 1, z],
-			[0, 0, 0, 1]
-		])
-	}
-
-	static scaling(x, y, z) {
-		return new Matrix([
-			[x, 0, 0, 0],
-			[0, y, 0, 0],
-			[0, 0, z, 0],
-			[0, 0, 0, 1]
-		])
-	}
-
-	static rotation_x(r) {
-		return new Matrix([
-			[1, 0,           0,            0],
-			[0, Math.cos(r), -Math.sin(r), 0],
-			[0, Math.sin(r), Math.cos(r),  0],
-			[0, 0,           0,            1]
-		])
-	}
-
-	static rotation_y(r) {
-		return new Matrix([
-			[Math.cos(r),  0, Math.sin(r), 0],
-			[0,            1, 0,           0],
-			[-Math.sin(r), 0, Math.cos(r), 0],
-			[0,            0, 0,           1]
-		])
-	}
-
-	static rotation_z(r) {
-		return new Matrix([
-			[Math.cos(r), -Math.sin(r), 0, 0],
-			[Math.sin(r), Math.cos(r),  0, 0],
-			[0,           0,            0, 0],
-			[0,           0,            0, 1]
-		])
-	}
-
-	static shearing(xy, xz, yx, yz, zx, zy) {
-		return new Matrix([
-			[1,  xy, xz, 0],
-			[yx, 1,  yz, 0],
-			[zx, zy, 1,  0],
-			[0,  0,  0,  1]
-		])
-	}
-
 	get(y, x) {
 		return this.data[y][x]
 	}
@@ -170,6 +116,59 @@ class Matrix {
 		return result
 	}
 
+	translation(x, y, z) {
+		return new Matrix([
+			[1, 0, 0, x],
+			[0, 1, 0, y],
+			[0, 0, 1, z],
+			[0, 0, 0, 1]
+		]).mul(this)
+	}
+
+	scaling(x, y, z) {
+		return new Matrix([
+			[x, 0, 0, 0],
+			[0, y, 0, 0],
+			[0, 0, z, 0],
+			[0, 0, 0, 1]
+		]).mul(this)
+	}
+
+	rotation_x(r) {
+		return new Matrix([
+			[1, 0,           0,            0],
+			[0, Math.cos(r), -Math.sin(r), 0],
+			[0, Math.sin(r), Math.cos(r),  0],
+			[0, 0,           0,            1]
+		]).mul(this)
+	}
+
+	rotation_y(r) {
+		return new Matrix([
+			[Math.cos(r),  0, Math.sin(r), 0],
+			[0,            1, 0,           0],
+			[-Math.sin(r), 0, Math.cos(r), 0],
+			[0,            0, 0,           1]
+		]).mul(this)
+	}
+
+	rotation_z(r) {
+		return new Matrix([
+			[Math.cos(r), -Math.sin(r), 0, 0],
+			[Math.sin(r), Math.cos(r),  0, 0],
+			[0,           0,            0, 0],
+			[0,           0,            0, 1]
+		]).mul(this)
+	}
+
+	shearing(xy, xz, yx, yz, zx, zy) {
+		return new Matrix([
+			[1,  xy, xz, 0],
+			[yx, 1,  yz, 0],
+			[zx, zy, 1,  0],
+			[0,  0,  0,  1]
+		]).mul(this)
+	}
 
 }
 
