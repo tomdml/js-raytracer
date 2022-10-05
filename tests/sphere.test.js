@@ -84,3 +84,25 @@ test('changing a spheres transformation', () => {
 	expect(s.transform).toBe(t)
 })
 
+test('intersecting a scaled sphere with a ray', () => {
+	const r = ray(point(0, 0, -5), vector(0, 0, 1))
+	const s = sphere()
+
+	s.transform = I.scaling(2, 2, 2)
+	const xs = s.intersect(r)
+
+	expect(xs.length).toBe(2)
+	expect(xs.at(0).t).toBe(3)
+	expect(xs.at(1).t).toBe(7)
+})
+
+test('intersecting a translated sphere with a ray', () => {
+	const r = ray(point(0, 0, -5), vector(0, 0, 1))
+	const s = sphere()
+
+	s.transform = I.translation(5, 0, 0)
+	const xs = s.intersect(r)
+
+	expect(xs.length).toBe(0)
+})
+

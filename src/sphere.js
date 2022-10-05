@@ -10,6 +10,8 @@ class Sphere {
 
 	intersect(ray) {
 
+		ray = ray.transform(this.transform.inverse)
+
 		// vector from sphere origin to ray origin
 		const sphere_to_ray = ray.origin.sub(point(0, 0, 0))
 
