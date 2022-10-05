@@ -70,3 +70,12 @@ test('the inverse of an x-rotation rotates in the opposite direction', () => {
 
 	expect(inv.mul(p)).toBeShallowCloseTo(point(0, root2/2, -root2/2))
 })
+
+test('rotating a point around the y axis', () => {
+	const p = point(0, 0, 1)
+	const half_quarter = Matrix.rotation_y(Math.PI / 4)
+	const full_quarter= Matrix.rotation_y(Math.PI / 2)
+
+	expect(half_quarter.mul(p)).toBeShallowCloseTo(point(root2/2, 0, root2/2))
+	expect(full_quarter.mul(p)).toBeShallowCloseTo(point(1, 0, 0))
+})

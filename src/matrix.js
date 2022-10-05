@@ -27,10 +27,19 @@ class Matrix {
 
 	static rotation_x(r) {
 		return new Matrix([
-			[1, 0, 0, 0],
+			[1, 0,           0,            0],
 			[0, Math.cos(r), -Math.sin(r), 0],
-			[0, Math.sin(r), Math.cos(r), 0],
-			[0, 0, 0, 1]
+			[0, Math.sin(r), Math.cos(r),  0],
+			[0, 0,           0,            1]
+		])
+	}
+
+	static rotation_y(r) {
+		return new Matrix([
+			[Math.cos(r),  0, Math.sin(r), 0],
+			[0,            1, 0,           0],
+			[-Math.sin(r), 0, Math.cos(r), 0],
+			[0,            0, 0,           1]
 		])
 	}
 
