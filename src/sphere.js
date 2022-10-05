@@ -32,6 +32,10 @@ class Sphere {
 		)
 	}
 
+	normal_at(p) {
+		return p.sub(point(0, 0, 0)).norm
+	}
+
 }
 
 function sphere() {

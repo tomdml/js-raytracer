@@ -3,6 +3,8 @@ const { point, vector } = require('../src/tuple')
 const { sphere } = require('../src/sphere')
 const { I } = require('../src/matrix')
 
+const root3over3 = (3 ** 0.5) / 3
+
 test('a ray intersects a sphere at two points', () => {
 	const r = ray(point(0, 0, -5), vector(0, 0, 1))
 	const s = sphere()
@@ -106,3 +108,37 @@ test('intersecting a translated sphere with a ray', () => {
 	expect(xs.length).toBe(0)
 })
 
+test('the normal on a sphere at a point on the x axis', () => {
+	const s = sphere()
+	const n = s.normal_at(point(1, 0, 0))
+
+	expect(n).toStrictEqual(vector(1, 0, 0))
+})
+
+test('the normal on a sphere at a point on the y axis', () => {
+	const s = sphere()
+	const n = s.normal_at(point(0, 1, 0))
+
+	expect(n).toStrictEqual(vector(0, 1, 0))
+})
+
+test('the normal on a sphere at a point on the z axis', () => {
+	const s = sphere()
+	const n = s.normal_at(point(0, 0, 1))
+
+	expect(n).toStrictEqual(vector(0, 0, 1))
+})
+
+test('the normal on a sphere at a nonaxial point', () => {
+
+	const s = sphere()
+	const n = s.normal_at(point(root3over3, root3over3, root3over3))
+
+	expect(n).toStrictEqual(vector(root3over3, root3over3, root3over3))
+})
+
+test('the normal is a normalised vector', () => {
+	const s = sphere() 
+	const n = s.normal_at(point(root3over3, root3over3, root3over3))
+	expect(n).toStrictEqual(n.norm)
+})
