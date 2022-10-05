@@ -10,8 +10,8 @@ test('a ray intersects a sphere at two points', () => {
 	const xs = s.intersect(r)
 
 	expect(xs.length).toBe(2)
-	expect(xs.at(0)).toBe(4.0)
-	expect(xs.at(1)).toBe(6.0)
+	expect(xs.at(0).t).toBe(4.0)
+	expect(xs.at(1).t).toBe(6.0)
 })
 
 test('a ray intersects a sphere at a tangent', () => {
@@ -21,8 +21,8 @@ test('a ray intersects a sphere at a tangent', () => {
 	const xs = s.intersect(r)
 
 	expect(xs.length).toBe(2)
-	expect(xs.at(0)).toBe(5.0)
-	expect(xs.at(1)).toBe(5.0)
+	expect(xs.at(0).t).toBe(5.0)
+	expect(xs.at(1).t).toBe(5.0)
 })
 
 test('a ray misses a sphere', () => {
@@ -42,8 +42,8 @@ test('a ray originates inside a sphere', () => {
 	const xs = s.intersect(r)
 
 	expect(xs.length).toBe(2)
-	expect(xs.at(0)).toBe(-1.0)
-	expect(xs.at(1)).toBe(1.0)
+	expect(xs.at(0).t).toBe(-1.0)
+	expect(xs.at(1).t).toBe(1.0)
 
 })
 
@@ -55,7 +55,18 @@ test('a sphere is behind a ray', () => {
 	const xs = s.intersect(r)
 
 	expect(xs.length).toBe(2)
-	expect(xs.at(0)).toBe(-6.0)
-	expect(xs.at(1)).toBe(-4.0)
+	expect(xs.at(0).t).toBe(-6.0)
+	expect(xs.at(1).t).toBe(-4.0)
 
+})
+
+test('intersect sets the object on the intersection', () => {
+	const r = ray(point(0, 0, -5), vector(0, 0, 1))
+	const s = sphere()
+
+	const xs = s.intersect(r)
+
+	expect(xs.length).toBe(2)
+	expect(xs.at(1).object).toBe(s)
+	expect(xs.at(0).object).toBe(s)
 })

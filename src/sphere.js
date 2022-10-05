@@ -1,4 +1,5 @@
 const { point } = require('../src/tuple')
+const { intersection, intersections } = require('../src/intersection')
 
 class Sphere {
 
@@ -15,12 +16,15 @@ class Sphere {
 
 		const discriminant = b**2 - 4*a*c
 
-		if (discriminant < 0) return []
+		if (discriminant < 0) return intersections()
 
 		const t1 = (-b - discriminant**0.5) / (2*a)
 		const t2 = (-b + discriminant**0.5) / (2*a)
 
-		return [t1, t2]
+		return intersections(
+			intersection(t1, this),
+			intersection(t2, this)
+		)
 	}
 
 }
