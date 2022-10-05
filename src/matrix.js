@@ -58,6 +58,13 @@ class Matrix {
 		}
 	}
 
+	get T() {
+		let arr = this.data
+		return new Matrix(
+			arr[0].map((col, i) => arr.map(row => row[i]))
+		)
+	}
+
 
 }
 

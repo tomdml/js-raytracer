@@ -106,3 +106,25 @@ test('multiplying the identity matrix by a tuple', () => {
 	let a = tuple(1, 2, 3, 4)
 	expect(I.mul(a)).toStrictEqual(a)
 })
+
+test('transposing a matrix', () => {
+	let A = matrix([
+		[0, 9, 3, 0],
+		[9, 8, 0, 8],
+		[1, 8, 5, 3],
+		[0, 0, 5, 8]
+	])
+
+	let T = matrix([
+		[0, 9, 1, 0],
+		[9, 8, 8, 0],
+		[3, 0, 5, 5],
+		[0, 8, 3, 8]
+	])
+
+	expect(A.T.eq(T)).toBe(true)
+})
+
+test('transposing the identity matrix', () => {
+	expect(I.T.eq(I)).toBe(true)
+})
