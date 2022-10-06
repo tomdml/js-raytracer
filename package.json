@@ -2,18 +2,15 @@
   "name": "js-raytracer",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
   "dependencies": {
     "vue": "^3.2.37"
   },
   "scripts": {
     "test": "standard --fix | snazzy && jest",
-    "main": "node main.js"
+    "main": "node main.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "jest": "^29.1.2",
