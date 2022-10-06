@@ -1,8 +1,8 @@
-const { ray } = require('../src/ray')
-const { point, vector } = require('../src/tuple')
-const { sphere } = require('../src/sphere')
-const { I } = require('../src/matrix')
-const { material } = require('../src/materials')
+const { ray } = require('../rt/ray')
+const { point, vector } = require('../rt/tuple')
+const { sphere } = require('../rt/sphere')
+const { I } = require('../rt/matrix')
+const { material } = require('../rt/materials')
 
 const root3over3 = (3 ** 0.5) / 3
 const root2over2 = (2 ** 0.5) / 2

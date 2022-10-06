@@ -1,5 +1,5 @@
-const { matrix, I } = require('../src/matrix')
-const { tuple } = require('../src/tuple')
+const { matrix, I } = require('../rt/matrix')
+const { tuple } = require('../rt/tuple')
 
 test('constructing and inspecting a 4x4 matrix', () => {
   const M = matrix([

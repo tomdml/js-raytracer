@@ -1,6 +1,6 @@
-const { pointLight } = require('../src/light')
-const { color } = require('../src/color')
-const { point } = require('../src/tuple')
+const { pointLight } = require('../rt/light')
+const { color } = require('../rt/color')
+const { point } = require('../rt/tuple')
 
 test('a point light has a position and intensity', () => {
   const intensity = color(1, 1, 1)

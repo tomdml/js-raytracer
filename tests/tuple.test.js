@@ -1,4 +1,4 @@
-const { tuple, point, vector } = require('../src/tuple')
+const { tuple, point, vector } = require('../rt/tuple')
 
 test('a tuple with w=1.0 is a point', () => {
   const a = tuple(4.3, -4.2, 3.1, 1.0)

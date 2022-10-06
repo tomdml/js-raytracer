@@ -1,7 +1,7 @@
-const { point } = require('../src/tuple')
-const { intersection, intersections } = require('../src/intersection')
-const { I } = require('../src/matrix')
-const { material } = require('../src/materials')
+const { point } = require('./tuple')
+const { intersection, intersections } = require('./intersection')
+const { I } = require('./matrix')
+const { material } = require('./materials')
 
 class Sphere {
   constructor (_material) {

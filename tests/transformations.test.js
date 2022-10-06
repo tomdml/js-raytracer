@@ -1,5 +1,5 @@
-const { I } = require('../src/matrix')
-const { point, vector } = require('../src/tuple')
+const { I } = require('../rt/matrix')
+const { point, vector } = require('../rt/tuple')
 
 const root2 = 2 ** 0.5
 

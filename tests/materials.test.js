@@ -1,7 +1,7 @@
-const { material } = require('../src/materials')
-const { color } = require('../src/color')
-const { point, vector } = require('../src/tuple')
-const { pointLight } = require('../src/light')
+const { material } = require('../rt/materials')
+const { color } = require('../rt/color')
+const { point, vector } = require('../rt/tuple')
+const { pointLight } = require('../rt/light')
 
 test('the default material', () => {
   const m = material()

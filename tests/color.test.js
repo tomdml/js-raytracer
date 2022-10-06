@@ -1,4 +1,4 @@
-const { color } = require('../src/color')
+const { color } = require('../rt/color')
 
 test('colors are (red, green, blue) tuples', () => {
   const c = color(-0.5, 0.4, 1.7)

@@ -1,6 +1,6 @@
-const { ray } = require('../src/ray')
-const { point, vector } = require('../src/tuple')
-const { I } = require('../src/matrix')
+const { ray } = require('../rt/ray')
+const { point, vector } = require('../rt/tuple')
+const { I } = require('../rt/matrix')
 
 test('creating and querying a ray', () => {
   const origin = point(1, 2, 3)

@@ -1,5 +1,5 @@
-const { intersection, intersections } = require('../src/intersection')
-const { sphere } = require('../src/sphere')
+const { intersection, intersections } = require('../rt/intersection')
+const { sphere } = require('../rt/sphere')
 
 test('an intersection encapsulates t and object', () => {
   const s = sphere()

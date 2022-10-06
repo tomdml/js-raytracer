@@ -1,13 +1,13 @@
 const fs = require('fs')
 const { exec } = require('child_process')
 
-const { point } = require('./src/tuple')
-const { ray } = require('./src/ray')
-const { Canvas } = require('./src/canvas')
-const { color } = require('./src/color')
-const { sphere } = require('./src/sphere')
-const { material } = require('./src/materials')
-const { pointLight } = require('./src/light')
+const { point } = require('./rt/tuple')
+const { ray } = require('./rt/ray')
+const { Canvas } = require('./rt/canvas')
+const { color } = require('./rt/color')
+const { sphere } = require('./rt/sphere')
+const { material } = require('./rt/materials')
+const { pointLight } = require('./rt/light')
 
 const origin = point(0, 0, -5)
 const wallZ = 10

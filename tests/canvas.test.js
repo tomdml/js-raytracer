@@ -1,5 +1,5 @@
-const { Canvas } = require('../src/canvas')
-const { color } = require('../src/color')
+const { Canvas } = require('../rt/canvas')
+const { color } = require('../rt/color')
 
 test('creating a canvas', () => {
   const c = new Canvas(10, 20)
