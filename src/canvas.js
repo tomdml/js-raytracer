@@ -24,13 +24,13 @@ ${this.width} ${this.height}
   }
 
   _ppm_body () {
-    const make_integer = (value) => Math.ceil(Math.min(Math.max(0, value), 1) * 255)
+    const makeInteger = (value) => Math.ceil(Math.min(Math.max(0, value), 1) * 255)
 
-    const pixel_to_ppm = (pixel) =>
-			`${make_integer(pixel.r)} ${make_integer(pixel.g)} ${make_integer(pixel.b)}`
+    const pixelToPPM = (pixel) =>
+      `${makeInteger(pixel.r)} ${makeInteger(pixel.g)} ${makeInteger(pixel.b)}`
 
     return this.grid.map(row =>
-      row.map(pixel => pixel_to_ppm(pixel)).join(' ')
+      row.map(pixel => pixelToPPM(pixel)).join(' ')
     ).join('\n')
   }
 

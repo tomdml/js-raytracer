@@ -5,8 +5,8 @@ class PointLight {
   }
 }
 
-function point_light (position, intensity) {
+function pointLight (position, intensity) {
   return new PointLight(position, intensity)
 }
 
-module.exports = { point_light }
+module.exports = { pointLight }

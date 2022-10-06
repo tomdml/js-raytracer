@@ -2,7 +2,7 @@ const { tuple } = require('./tuple')
 
 class Matrix {
   constructor (arg) {
-    if (arg === 4) this.data = [[,,,], [,,,], [,,,], [,,,]]
+    if (arg === 4) this.data = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
     else this.data = [...arg]
   }
 
@@ -19,7 +19,7 @@ class Matrix {
     let result = true
     this.data.forEach((row, y) =>
       row.forEach((item, x) => {
-        if (item != other.get(y, x)) result = false
+        if (item !== other.get(y, x)) result = false
       })
     )
 
@@ -29,7 +29,7 @@ class Matrix {
   mul (other) {
     const A = this
 
-    if (other.constructor.name == 'Tuple') { // handle 4x1
+    if (other.constructor.name === 'Tuple') { // handle 4x1
       const b = other
 
       const result = tuple(...[0, 1, 2, 3].map(row =>
@@ -44,9 +44,9 @@ class Matrix {
       this.data.forEach((row, y) =>
         row.forEach((_, x) => {
           const r = A.get(y, 0) * B.get(0, x) +
-							A.get(y, 1) * B.get(1, x) +
-							A.get(y, 2) * B.get(2, x) +
-							A.get(y, 3) * B.get(3, x)
+              A.get(y, 1) * B.get(1, x) +
+              A.get(y, 2) * B.get(2, x) +
+              A.get(y, 3) * B.get(3, x)
 
           result.set(y, x, r)
         })
@@ -64,7 +64,7 @@ class Matrix {
   }
 
   get determinant () {
-    if (this.data.length == 2) {
+    if (this.data.length === 2) {
       // for [[a, b], [c, d]], determinant = ad - bc
       return this.get(0, 0) * this.get(1, 1) - this.get(0, 1) * this.get(1, 0)
     }
@@ -82,8 +82,8 @@ class Matrix {
     return new Matrix(
       // drop the given row and col
       this.data
-        .filter((_row, idx) => idx != row)
-        .map(_row => _row.filter((_col, idx) => idx != col))
+        .filter((_row, idx) => idx !== row)
+        .map(_row => _row.filter((_col, idx) => idx !== col))
     )
   }
 
@@ -96,7 +96,7 @@ class Matrix {
   }
 
   get invertible () {
-    return this.determinant != 0
+    return this.determinant !== 0
   }
 
   get inverse () {
@@ -105,9 +105,9 @@ class Matrix {
     const result = new Matrix(4)
     const determinant = this.determinant
 
-    this.data.forEach((row, row_idx) =>
-      row.forEach((_, col_idx) =>
-        result.set(col_idx, row_idx, this.cofactor(row_idx, col_idx) / determinant)
+    this.data.forEach((row, rowIdx) =>
+      row.forEach((_, colIdx) =>
+        result.set(colIdx, rowIdx, this.cofactor(rowIdx, colIdx) / determinant)
       )
     )
 

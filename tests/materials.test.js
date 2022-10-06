@@ -1,7 +1,7 @@
 const { material } = require('../src/materials')
 const { color } = require('../src/color')
 const { point, vector } = require('../src/tuple')
-const { point_light } = require('../src/light')
+const { pointLight } = require('../src/light')
 
 test('the default material', () => {
   const m = material()
@@ -19,7 +19,7 @@ test('lighting with the eye between the light and the surface', () => {
 
   const eyev = vector(0, 0, -1)
   const normalv = vector(0, 0, -1)
-  const light = point_light(point(0, 0, -10), color(1, 1, 1))
+  const light = pointLight(point(0, 0, -10), color(1, 1, 1))
 
   const result = m.lighting(light, position, eyev, normalv)
 
@@ -32,7 +32,7 @@ test('lighting weith the eye between the light and the surface, eye offset 45deg
 
   const eyev = vector(0, (2 ** 0.5) / 2, -(2 ** 0.5) / 2)
   const normalv = vector(0, 0, -1)
-  const light = point_light(point(0, 0, -10), color(1, 1, 1))
+  const light = pointLight(point(0, 0, -10), color(1, 1, 1))
 
   const result = m.lighting(light, position, eyev, normalv)
 
@@ -45,7 +45,7 @@ test('lighting with eye opposite surface, light offset 45deg', () => {
 
   const eyev = vector(0, 0, -1)
   const normalv = vector(0, 0, -1)
-  const light = point_light(point(0, 10, -10), color(1, 1, 1))
+  const light = pointLight(point(0, 10, -10), color(1, 1, 1))
 
   const result = m.lighting(light, position, eyev, normalv)
 
@@ -58,7 +58,7 @@ test('lighting with eye in the path of the reflection vector', () => {
 
   const eyev = vector(0, -(2 ** 0.5) / 2, -(2 ** 0.5) / 2)
   const normalv = vector(0, 0, -1)
-  const light = point_light(point(0, 10, -10), color(1, 1, 1))
+  const light = pointLight(point(0, 10, -10), color(1, 1, 1))
 
   const result = m.lighting(light, position, eyev, normalv)
 
@@ -71,7 +71,7 @@ test('lighting with the light behind the surface', () => {
 
   const eyev = vector(0, 0, -1)
   const normalv = vector(0, 0, -1)
-  const light = point_light(point(0, 0, 10), color(1, 1, 1))
+  const light = pointLight(point(0, 0, 10), color(1, 1, 1))
 
   const result = m.lighting(light, position, eyev, normalv)
 

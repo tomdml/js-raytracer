@@ -12,9 +12,9 @@ function toBeShallowCloseTo (actual, target) {
   ).every(item => item === true)
 
   return {
-	    message: () =>
-	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
-	    pass
+    message: () =>
+          `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
+    pass
   }
 }
 
@@ -25,16 +25,16 @@ function closeToMatrix (actual, target) {
     return Math.abs(a - b) < epsilon
   }
 
-  const pass = actual.data.map((row, row_idx) =>
-    row.map((cell, col_idx) =>
-      floatEqual(cell, target.get(row_idx, col_idx), epsilon)
-	    )
+  const pass = actual.data.map((row, rowIdx) =>
+    row.map((cell, colIdx) =>
+      floatEqual(cell, target.get(rowIdx, colIdx), epsilon)
+    )
   ).every(row => row.every(item => item))
 
   return {
-	    message: () =>
-	        `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
-	    pass
+    message: () =>
+          `expected ${this.utils.printReceived(actual)} to be matrix close to ${this.utils.printExpected(target)}`,
+    pass
   }
 }
 

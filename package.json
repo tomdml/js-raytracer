@@ -8,5 +8,8 @@
   },
   "jest": {
     "setupFilesAfterEnv": ["./setup-jest.js"]
+  },
+  "standard": {
+    "globals": ["expect", "test"]
   }
 }

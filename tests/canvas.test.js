@@ -16,8 +16,8 @@ test('writing pixels to a canvas', () => {
 
 test('constructing the PPM header', () => {
   const c = new Canvas(5, 3)
-  const ppm_header = c._ppm_header
-  expect(ppm_header).toMatch(/^P3\n5 3\n255?/)
+  const ppmHeader = c._ppm_header
+  expect(ppmHeader).toMatch(/^P3\n5 3\n255?/)
 })
 
 test('constructing the PPM pixel data', () => {
@@ -29,9 +29,9 @@ test('constructing the PPM pixel data', () => {
   c.write_pixel(0, 0, c1)
   c.write_pixel(2, 1, c2)
   c.write_pixel(4, 2, c3)
-  const ppm_body = c._ppm_body()
+  const ppmBody = c._ppm_body()
 
-  expect(ppm_body).toMatch(`255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  expect(ppmBody).toMatch(`255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255`)
 })

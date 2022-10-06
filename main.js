@@ -7,28 +7,25 @@ const { Canvas } = require('./src/canvas')
 const { color } = require('./src/color')
 const { sphere } = require('./src/sphere')
 const { material } = require('./src/materials')
-const { point_light } = require('./src/light')
+const { pointLight } = require('./src/light')
 
 const origin = point(0, 0, -5)
-const wall_z = 10
-const wall_size = 7
-const canvas_pixels = 500
-const half = wall_size / 2
-const pixel_size = wall_size / canvas_pixels
+const wallZ = 10
+const wallSize = 7
+const canvasPixels = 100
+const half = wallSize / 2
+const pixelSize = wallSize / canvasPixels
 
-const canvas = new Canvas(canvas_pixels, canvas_pixels)
-const red = color(1, 0, 0)
-const shape = sphere()
-shape.material = material(color(1, 0.2, 1))
+const canvas = new Canvas(canvasPixels, canvasPixels)
+const shape = sphere({ _material: material({ _color: color(1, 0.2, 1) }) })
+const light = pointLight(point(-10, 10, -10), color(1, 1, 1))
 
-const light = point_light(point(-10, 10, -10), color(1, 1, 1))
+for (const y of Array(canvasPixels).keys()) {
+  const worldY = half - pixelSize * y
+  for (const x of Array(canvasPixels).keys()) {
+    const worldX = -half + pixelSize * x
 
-for (const y of Array(canvas_pixels).keys()) {
-  const world_y = half - pixel_size * y
-  for (const x of Array(canvas_pixels).keys()) {
-    const world_x = -half + pixel_size * x
-
-    const position = point(world_x, world_y, wall_z)
+    const position = point(worldX, worldY, wallZ)
 
     const r = ray(origin, position.sub(origin).norm)
     const xs = shape.intersect(r)

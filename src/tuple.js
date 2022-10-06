@@ -55,9 +55,9 @@ class Tuple {
     // vector operation: w should be zero here
     return (
       this.x ** 2 +
-			this.y ** 2 +
-			this.z ** 2 +
-			this.w ** 2
+      this.y ** 2 +
+      this.z ** 2 +
+      this.w ** 2
     ) ** 0.5
   }
 
@@ -75,9 +75,9 @@ class Tuple {
   dot (other) {
     // vector operation: w should be zero here
     return this.x * other.x +
-			   this.y * other.y +
-			   this.z * other.z +
-			   this.w * other.w
+         this.y * other.y +
+         this.z * other.z +
+         this.w * other.w
   }
 
   cross (other) {
@@ -97,17 +97,17 @@ class Tuple {
 
 // class Vector extends Tuple {
 
-// 	constructor(x, y, z) {
-// 		super(x, y, z, 0)
-// 	}
+//   constructor(x, y, z) {
+//     super(x, y, z, 0)
+//   }
 
 // }
 
 // class Point extends Tuple {
 
-// 	constructor(x, y, z) {
-// 		super(x, y, z, 1)
-// 	}
+//   constructor(x, y, z) {
+//     super(x, y, z, 1)
+//   }
 // }
 
 function tuple (x, y, z, w) {

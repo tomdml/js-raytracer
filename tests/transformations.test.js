@@ -1,4 +1,4 @@
-const { Matrix, I, matrix } = require('../src/matrix')
+const { I } = require('../src/matrix')
 const { point, vector } = require('../src/tuple')
 
 const root2 = 2 ** 0.5
@@ -55,37 +55,37 @@ test('reflection is scaling by a negative value', () => {
 
 test('rotating a point around the x axis', () => {
   const p = point(0, 1, 0)
-  const half_quarter = I.rotation_x(Math.PI / 4)
-  const full_quarter = I.rotation_x(Math.PI / 2)
+  const halfQuarter = I.rotation_x(Math.PI / 4)
+  const fullQuarter = I.rotation_x(Math.PI / 2)
 
-  expect(half_quarter.mul(p)).toBeShallowCloseTo(point(0, root2 / 2, root2 / 2))
-  expect(full_quarter.mul(p)).toBeShallowCloseTo(point(0, 0, 1))
+  expect(halfQuarter.mul(p)).toBeShallowCloseTo(point(0, root2 / 2, root2 / 2))
+  expect(fullQuarter.mul(p)).toBeShallowCloseTo(point(0, 0, 1))
 })
 
 test('the inverse of an x-rotation rotates in the opposite direction', () => {
   const p = point(0, 1, 0)
-  const half_quarter = I.rotation_x(Math.PI / 4)
-  const inv = half_quarter.inverse
+  const halfQuarter = I.rotation_x(Math.PI / 4)
+  const inv = halfQuarter.inverse
 
   expect(inv.mul(p)).toBeShallowCloseTo(point(0, root2 / 2, -root2 / 2))
 })
 
 test('rotating a point around the y axis', () => {
   const p = point(0, 0, 1)
-  const half_quarter = I.rotation_y(Math.PI / 4)
-  const full_quarter = I.rotation_y(Math.PI / 2)
+  const halfQuarter = I.rotation_y(Math.PI / 4)
+  const fullQuarter = I.rotation_y(Math.PI / 2)
 
-  expect(half_quarter.mul(p)).toBeShallowCloseTo(point(root2 / 2, 0, root2 / 2))
-  expect(full_quarter.mul(p)).toBeShallowCloseTo(point(1, 0, 0))
+  expect(halfQuarter.mul(p)).toBeShallowCloseTo(point(root2 / 2, 0, root2 / 2))
+  expect(fullQuarter.mul(p)).toBeShallowCloseTo(point(1, 0, 0))
 })
 
 test('rotating a point around the z axis', () => {
   const p = point(0, 1, 0)
-  const half_quarter = I.rotation_z(Math.PI / 4)
-  const full_quarter = I.rotation_z(Math.PI / 2)
+  const halfQuarter = I.rotation_z(Math.PI / 4)
+  const fullQuarter = I.rotation_z(Math.PI / 2)
 
-  expect(half_quarter.mul(p)).toBeShallowCloseTo(point(-root2 / 2, root2 / 2, 0))
-  expect(full_quarter.mul(p)).toBeShallowCloseTo(point(-1, 0, 0))
+  expect(halfQuarter.mul(p)).toBeShallowCloseTo(point(-root2 / 2, root2 / 2, 0))
+  expect(fullQuarter.mul(p)).toBeShallowCloseTo(point(-1, 0, 0))
 })
 
 test('a shearing transformation moves x in proportion to y', () => {

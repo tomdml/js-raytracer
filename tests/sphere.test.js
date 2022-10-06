@@ -163,7 +163,7 @@ test('a sphere has a default material', () => {
 
 test('a sphere may be assigned a material', () => {
   const s = sphere()
-  const m = material(ambient = 10)
+  const m = material({ ambient: 10 })
 
   s.material = m
   expect(s.material).toBe(m)
