@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest",
+    "test": "standard --fix | snazzy && jest",
     "main": "node main.js"
   },
   "devDependencies": {

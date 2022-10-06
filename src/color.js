@@ -1,50 +1,47 @@
 class Color {
+  constructor (r, g, b) {
+    this.r = r
+    this.g = g
+    this.b = b
+  }
 
-	constructor(r, g, b) {
-		this.r = r
-		this.g = g
-		this.b = b
-	}
+  add (other) {
+    return new Color(
+      this.r + other.r,
+      this.g + other.g,
+      this.b + other.b
+    )
+  }
 
-	add(other) {
-		return new Color(
-			this.r + other.r,
-			this.g + other.g,
-			this.b + other.b,
-		)
-	}
+  sub (other) {
+    return new Color(
+      this.r - other.r,
+      this.g - other.g,
+      this.b - other.b
+    )
+  }
 
-	sub(other) {
-		return new Color(
-			this.r - other.r,
-			this.g - other.g,
-			this.b - other.b,
-		)
-	}
+  mul (other) {
+    if (typeof (other) === 'number') {
+      return new Color(
+        this.r * other,
+        this.g * other,
+        this.b * other
+      )
+    }
 
-	mul(other) {
-		if (typeof(other) === 'number') {
-			return new Color(
-				this.r * other,
-				this.g * other,
-				this.b * other,
-			)
-		}
-
-		if (other.constructor.name === 'Color') {
-			return new Color(
-				this.r * other.r,
-				this.g * other.g,
-				this.b * other.b,
-			)
-		}
-
-	}
-
+    if (other.constructor.name === 'Color') {
+      return new Color(
+        this.r * other.r,
+        this.g * other.g,
+        this.b * other.b
+      )
+    }
+  }
 }
 
-function color(r, g, b) {
-	return new Color(r, g, b)
+function color (r, g, b) {
+  return new Color(r, g, b)
 }
 
 module.exports = { color }
